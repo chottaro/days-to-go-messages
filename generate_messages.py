@@ -36,6 +36,11 @@ def _get_season(month: int) -> tuple[str, str, str]:
             return info
     return SEASON[(12, 1, 2)]
 
+MAX_LEN_JA = 20
+MAX_LEN_EN = 30
+GENERATE_COUNT = 20
+RESULT_COUNT = 10
+
 def _generate(prompt: str) -> list[str]:
     response = client.models.generate_content(
         model=GEMINI_MODEL,
@@ -43,35 +48,32 @@ def _generate(prompt: str) -> list[str]:
         config={'response_mime_type': 'application/json'},
     )
     result = json.loads(response.text)
-    return result if isinstance(result, list) else list(result.values())[0]
+    messages = result if isinstance(result, list) else list(result.values())[0]
+    return messages
+
+def _pick_shortest(messages: list[str], max_len: int, n: int = RESULT_COUNT) -> list[str]:
+    filtered = [m for m in messages if len(m) <= max_len]
+    if len(filtered) < n:
+        filtered = sorted(messages, key=len)
+    return filtered[:n]
 
 def generate_ja(theme: str) -> list[str]:
-    return _generate(f"""
-スマートフォンのホーム画面ウィジェット用の短い励ましメッセージを10件生成してください。
+    messages = _generate(f"""
+スマートフォンのホーム画面ウィジェット用の短い励ましメッセージを{GENERATE_COUNT}件生成してください。
 テーマ：{theme}
-厳守事項：
-- 必ず1文のみ（句点「。」や「！」は1つだけ）
-- 15文字以内
-- 日本語
-- 温かく汎用的（特定個人・職業に限定しない）
-- JSON文字列配列のみ出力
-良い例：「ゆっくりでいい。えらい！」→NG（2文） 「あと少し、丁寧に。」→OK
-例（参考）：「今日もお疲れ様。」「あと少しだよ。」「えらい、本当に。」「無理しないでね。」
+条件：日本語・1文のみ・温かく汎用的（特定個人・職業に限定しない）・JSON文字列配列のみ出力
+例：「今日もお疲れ様。」「あと少しだよ。」「えらい、本当に。」「無理しないでね。」
 """)
+    return _pick_shortest(messages, MAX_LEN_JA)
 
 def generate_en(theme: str) -> list[str]:
-    return _generate(f"""
-Generate 10 short encouraging messages for a home-screen widget counting down to the next day off.
+    messages = _generate(f"""
+Generate {GENERATE_COUNT} short encouraging messages for a home-screen widget counting down to the next day off.
 Theme: {theme}
-Rules (strictly follow):
-- One sentence only (single period or exclamation mark)
-- 25 characters or fewer
-- English
-- Warm and universal tone
-- Output JSON string array only
-Good examples: "Almost there!", "You've got this.", "One day at a time.", "Hang in there!"
-Bad examples: "Keep going. You can do it." (two sentences)
+Rules: English, one sentence only, warm and universal tone, output JSON string array only.
+Examples: "Almost there!", "You've got this.", "One day at a time.", "Hang in there!"
 """)
+    return _pick_shortest(messages, MAX_LEN_EN)
 
 def main():
     now = datetime.now(timezone.utc)
