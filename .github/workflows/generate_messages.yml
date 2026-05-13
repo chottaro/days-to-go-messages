@@ -24,7 +24,7 @@ jobs:
       - name: Generate messages
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: gemini-3.1-flash-lite-preview
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
         run: python generate_messages.py
 
       - name: Commit and push
