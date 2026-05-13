@@ -49,14 +49,16 @@ def generate_ja(theme: str) -> list[str]:
     return _generate(f"""
 休みまでのカウントダウンアプリのウィジェットに表示する励ましメッセージを10件生成してください。
 テーマ：{theme}
-条件：日本語・20〜50文字・温かく汎用的（特定個人・職業に限定しない）・JSON文字列配列のみ出力
+条件：日本語・10〜20文字・一言レベルの短さ・温かく汎用的（特定個人・職業に限定しない）・JSON文字列配列のみ出力
+例：「あと少し。今日も丁寧に。」「ゆっくりでいい。えらい！」
 """)
 
 def generate_en(theme: str) -> list[str]:
     return _generate(f"""
 Generate 10 encouraging messages for a home-screen widget counting down to the next day off.
 Theme: {theme}
-Rules: English, 10-60 chars each, warm and universal tone, output JSON string array only.
+Rules: English, 8-35 chars each, one-liner style, warm and universal tone, output JSON string array only.
+Examples: "Almost there. Keep going.", "One step at a time.", "You've got this!"
 """)
 
 def main():
