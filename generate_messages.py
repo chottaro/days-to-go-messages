@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from google import genai  # type: ignore[import-not-found]
 
 GEMINI_API_KEY = os.environ['GEMINI_API_KEY']
-GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-2.0-flash-lite')
+GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-3.1-flash-lite-preview')
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
