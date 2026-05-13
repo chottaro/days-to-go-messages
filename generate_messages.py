@@ -47,18 +47,30 @@ def _generate(prompt: str) -> list[str]:
 
 def generate_ja(theme: str) -> list[str]:
     return _generate(f"""
-休みまでのカウントダウンアプリのウィジェットに表示する励ましメッセージを10件生成してください。
+スマートフォンのホーム画面ウィジェット用の短い励ましメッセージを10件生成してください。
 テーマ：{theme}
-条件：日本語・10〜20文字・一言レベルの短さ・温かく汎用的（特定個人・職業に限定しない）・JSON文字列配列のみ出力
-例：「あと少し。今日も丁寧に。」「ゆっくりでいい。えらい！」
+厳守事項：
+- 必ず1文のみ（句点「。」や「！」は1つだけ）
+- 15文字以内
+- 日本語
+- 温かく汎用的（特定個人・職業に限定しない）
+- JSON文字列配列のみ出力
+良い例：「ゆっくりでいい。えらい！」→NG（2文） 「あと少し、丁寧に。」→OK
+例（参考）：「今日もお疲れ様。」「あと少しだよ。」「えらい、本当に。」「無理しないでね。」
 """)
 
 def generate_en(theme: str) -> list[str]:
     return _generate(f"""
-Generate 10 encouraging messages for a home-screen widget counting down to the next day off.
+Generate 10 short encouraging messages for a home-screen widget counting down to the next day off.
 Theme: {theme}
-Rules: English, 8-35 chars each, one-liner style, warm and universal tone, output JSON string array only.
-Examples: "Almost there. Keep going.", "One step at a time.", "You've got this!"
+Rules (strictly follow):
+- One sentence only (single period or exclamation mark)
+- 25 characters or fewer
+- English
+- Warm and universal tone
+- Output JSON string array only
+Good examples: "Almost there!", "You've got this.", "One day at a time.", "Hang in there!"
+Bad examples: "Keep going. You can do it." (two sentences)
 """)
 
 def main():
