@@ -1,7 +1,9 @@
 import os
 import json
+import time
 from datetime import datetime, timezone
 from google import genai  # type: ignore[import-not-found]
+from google.genai import errors as genai_errors
 
 GEMINI_API_KEY = os.environ['GEMINI_API_KEY']
 GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-3.1-flash-lite-preview')
@@ -40,16 +42,24 @@ MAX_LEN_JA = 20
 MAX_LEN_EN = 30
 GENERATE_COUNT = 20
 RESULT_COUNT = 10
+MAX_RETRIES = 3
+RETRY_INTERVAL = 30
 
 def _generate(prompt: str) -> list[str]:
-    response = client.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=prompt,
-        config={'response_mime_type': 'application/json'},
-    )
-    result = json.loads(response.text)
-    messages = result if isinstance(result, list) else list(result.values())[0]
-    return messages
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            response = client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=prompt,
+                config={'response_mime_type': 'application/json'},
+            )
+            result = json.loads(response.text)
+            return result if isinstance(result, list) else list(result.values())[0]
+        except genai_errors.ServerError as e:
+            if attempt == MAX_RETRIES:
+                raise
+            print(f'Attempt {attempt}/{MAX_RETRIES} failed: {e}. Retrying in {RETRY_INTERVAL}s...')
+            time.sleep(RETRY_INTERVAL)
 
 def _pick_shortest(messages: list[str], max_len: int, n: int = RESULT_COUNT) -> list[str]:
     filtered = [m for m in messages if len(m) <= max_len]
