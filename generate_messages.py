@@ -3,7 +3,7 @@ import json
 import time
 from datetime import datetime, timezone
 from google import genai  # type: ignore[import-not-found]
-from google.genai import errors as genai_errors
+from google.genai import errors as genai_errors  # type: ignore[import-not-found]
 
 GEMINI_API_KEY = os.environ['GEMINI_API_KEY']
 GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-3.1-flash-lite-preview')
@@ -60,6 +60,7 @@ def _generate(prompt: str) -> list[str]:
                 raise
             print(f'Attempt {attempt}/{MAX_RETRIES} failed: {e}. Retrying in {RETRY_INTERVAL}s...')
             time.sleep(RETRY_INTERVAL)
+    raise RuntimeError("unreachable")
 
 def _pick_shortest(messages: list[str], max_len: int, n: int = RESULT_COUNT) -> list[str]:
     filtered = [m for m in messages if len(m) <= max_len]
