@@ -1,0 +1,102 @@
+{
+  "en": {
+    "today_off": [
+      "You made it — enjoy your day off!",
+      "Rest mode: on. You’ve earned this.",
+      "Slow down and recharge today.",
+      "Treat yourself a little. You deserve it."
+    ],
+    "rest_0": [
+      "Almost there — your break starts today!",
+      "Hang tight; relief is right here."
+    ],
+    "rest_1": [
+      "One more day. You can do this.",
+      "Tomorrow is your finish line for this stretch."
+    ],
+    "rest_short": [
+      "A few more days — keep steady steps.",
+      "Small progress still counts. Keep going.",
+      "You’re closer than yesterday."
+    ],
+    "rest_long": [
+      "Long runway ahead — one day at a time.",
+      "Pace yourself; consistency beats speed.",
+      "Tiny wins add up. Keep showing up."
+    ],
+    "monday": [
+      "Monday energy is tough — breathe and begin.",
+      "Start simple; momentum will follow.",
+      "You’ve survived Mondays before. This one too."
+    ],
+    "mid_week": [
+      "Midweek hero — you’re past the halfway climb.",
+      "Wednesday wins: you’re still here and trying.",
+      "Half the week down — nice work."
+    ],
+    "friday": [
+      "Friday focus — finish strong, then rest.",
+      "Almost weekend energy — stay kind to yourself."
+    ],
+    "no_config": [
+      "No rest days set yet — that’s okay. Adjust anytime.",
+      "Even without a day off on the calendar, you still matter.",
+      "Rest isn’t only a date — take micro-breaks today."
+    ],
+    "no_target": [
+      "No upcoming day off found — hang in there.",
+      "When the calendar is quiet, be extra gentle with yourself.",
+      "You’re doing your best in a long stretch — I’m cheering for you."
+    ]
+  },
+  "ja": {
+    "today_off": [
+      "待ちに待ったお休み！思いっきり楽しみましょう。",
+      "よく頑張りました。今日はリチャージの日です。",
+      "今日は自分を甘やかしていい日です。",
+      "休み、満喫していきましょう！"
+    ],
+    "rest_0": [
+      "今日がゴール！あと一息、乗り切りましょう。",
+      "もうすぐそこ。深呼吸して、丁寧に。"
+    ],
+    "rest_1": [
+      "あと1日。無理せず、着実に。",
+      "明日は違う景色が見えます。今日は前を向いて。"
+    ],
+    "rest_short": [
+      "あと少しの辛抱です。一歩ずつで大丈夫。",
+      "小さな前進も前進。えらい！",
+      "昨日より近づいています。"
+    ],
+    "rest_long": [
+      "まだ先でも、今日一日は確実に乗り越えられます。",
+      "長丁場でも、ペースは自分のもの。無理だけはしないで。",
+      "続けること自体がすごい。ゆっくりでいい。"
+    ],
+    "monday": [
+      "月曜は特にキツい日。まずは軽く始めましょう。",
+      "今日が一番大変な日かも。気合で…いや、息をして。",
+      "月曜を越えた自分、すでに強い。"
+    ],
+    "mid_week": [
+      "週の真ん中まで来ましたね。えらい！",
+      "水曜、折り返し地点。ここまで来た自分を認めて。",
+      "あと半分。ペース配分、自分のもの。"
+    ],
+    "friday": [
+      "金曜、最後のひと踏ん張り。丁寧に仕上げよう。",
+      "週末が見えてきました。無理のない範囲で。"
+    ],
+    "no_config": [
+      "休みの曜日が未設定でも大丈夫。いつでも設定できます。",
+      "カレンダーに休みがなくても、あなたの頑張りは本物です。",
+      "短い休憩も立派な休息。今日は一呼吸。"
+    ],
+    "no_target": [
+      "しばらく休みが見当たりません…無理しすぎないで。",
+      "長い道のりでも、今日だけは自分に優しく。",
+      "休みが遠くても、応援しています。"
+    ]
+  }
+}

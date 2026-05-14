@@ -2,6 +2,7 @@ import os
 import json
 import time
 from datetime import datetime, timezone
+from pathlib import Path
 from google import genai  # type: ignore[import-not-found]
 from google.genai import errors as genai_errors  # type: ignore[import-not-found]
 
@@ -9,6 +10,19 @@ GEMINI_API_KEY = os.environ['GEMINI_API_KEY']
 GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-3.1-flash-lite-preview')
 
 client = genai.Client(api_key=GEMINI_API_KEY)
+
+def _load_style_examples() -> tuple[list[str], list[str]]:
+    path = Path(__file__).parent / 'reference' / 'encouragement.json'
+    data = json.loads(path.read_text(encoding='utf-8'))
+    ja_examples: list[str] = []
+    en_examples: list[str] = []
+    for msgs in data.get('ja', {}).values():
+        ja_examples.extend(msgs)
+    for msgs in data.get('en', {}).values():
+        en_examples.extend(msgs)
+    return ja_examples, en_examples
+
+_STYLE_JA, _STYLE_EN = _load_style_examples()
 
 SEASON = {
     (3, 4, 5): ('spring', '春・新生活・桜', 'spring, new beginnings'),
@@ -18,18 +32,18 @@ SEASON = {
 }
 
 MONTHLY_THEME = {
-    1:  ('新年・お正月気分',            'New Year energy'),
-    2:  ('節分・冬の終わり',            'end of winter, fresh start'),
-    3:  ('春の始まり・卒業・旅立ち',    'spring beginnings, farewells'),
-    4:  ('桜・新生活スタート',          'cherry blossoms, new chapter'),
-    5:  ('ゴールデンウィーク・初夏',    'golden week, early summer'),
+    1:  ('冬・新年の決意',              'winter, new year mindset'),
+    2:  ('冬の終わり・春への期待',      'end of winter, fresh start'),
+    3:  ('春の始まり・年度末',          'spring beginnings'),
+    4:  ('春・新生活スタート',           'spring, new chapter'),
+    5:  ('初夏・新緑・さわやかな季節',  'early summer, fresh greenery'),
     6:  ('梅雨・夏への準備',            'rainy season, preparing for summer'),
-    7:  ('七夕・夏本番',                'midsummer, Tanabata wishes'),
-    8:  ('お盆・夏休み・夏の終わり',    'Obon, summer holidays winding down'),
+    7:  ('夏本番・暑さの盛り',          'peak summer heat and energy'),
+    8:  ('真夏・夏の終わり',           'late summer, winding down'),
     9:  ('秋の始まり・実りの季節',      'early autumn, harvest season'),
     10: ('秋深まる・ハロウィン',        'deep autumn, Halloween'),
     11: ('紅葉・晩秋',                  'autumn leaves, late autumn'),
-    12: ('クリスマス・年末・大掃除',    'Christmas, year-end reflection'),
+    12: ('年末・大掃除・冬休み',        'year-end, winter break'),
 }
 
 def _get_season(month: int) -> tuple[str, str, str]:
@@ -45,7 +59,7 @@ RESULT_COUNT = 10
 MAX_RETRIES = 3
 RETRY_INTERVAL = 30
 
-def _generate(prompt: str) -> list[str]:
+def _call_api(prompt: str) -> dict[str, list[str]]:
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             response = client.models.generate_content(
@@ -53,8 +67,7 @@ def _generate(prompt: str) -> list[str]:
                 contents=prompt,
                 config={'response_mime_type': 'application/json'},
             )
-            result = json.loads(response.text)
-            return result if isinstance(result, list) else list(result.values())[0]
+            return json.loads(response.text)  # type: ignore[no-any-return]
         except genai_errors.ServerError as e:
             if attempt == MAX_RETRIES:
                 raise
@@ -68,23 +81,26 @@ def _pick_shortest(messages: list[str], max_len: int, n: int = RESULT_COUNT) -> 
         filtered = sorted(messages, key=len)
     return filtered[:n]
 
-def generate_ja(theme: str) -> list[str]:
-    messages = _generate(f"""
-スマートフォンのホーム画面ウィジェット用の短い励ましメッセージを{GENERATE_COUNT}件生成してください。
-テーマ：{theme}
-条件：日本語・1文のみ・温かく汎用的（特定個人・職業に限定しない）・JSON文字列配列のみ出力
-例：「今日もお疲れ様。」「あと少しだよ。」「えらい、本当に。」「無理しないでね。」
-""")
-    return _pick_shortest(messages, MAX_LEN_JA)
+def generate(theme_ja: str, theme_en: str) -> tuple[list[str], list[str]]:
+    ja_examples = ''.join(f'「{m}」' for m in _STYLE_JA[:8])
+    en_examples = ' '.join(f'"{m}"' for m in _STYLE_EN[:8])
+    result = _call_api(f"""
+スマートフォンのホーム画面ウィジェット（次の休みまでのカウントダウン表示）用の短い励ましメッセージを日本語・英語それぞれ{GENERATE_COUNT}件生成してください。
 
-def generate_en(theme: str) -> list[str]:
-    messages = _generate(f"""
-Generate {GENERATE_COUNT} short encouraging messages for a home-screen widget counting down to the next day off.
-Theme: {theme}
-Rules: English, one sentence only, warm and universal tone, output JSON string array only.
-Examples: "Almost there!", "You've got this.", "One day at a time.", "Hang in there!"
+日本語テーマ：{theme_ja}
+英語テーマ：{theme_en}
+
+条件（日英共通）：
+- 1文のみ・温かく汎用的（特定個人・職業に限定しない）
+- 特定の連休・祝日・行事が「これから来る・待っている」という表現は絶対に使わないこと（例：「連休が待っています」「Golden Week is near」は不可）
+- 月のどの日にも違和感なく使えるよう、時期に依存しない表現にすること
+
+日本語スタイル参考（このような簡潔・直接的な表現を目指すこと）：{ja_examples}
+英語スタイル参考（aim for this concise, direct tone）：{en_examples}
+
+出力形式（JSONのみ）：{{"ja": ["...", ...], "en": ["...", ...]}}
 """)
-    return _pick_shortest(messages, MAX_LEN_EN)
+    return _pick_shortest(result.get('ja', []), MAX_LEN_JA), _pick_shortest(result.get('en', []), MAX_LEN_EN)
 
 def main():
     now = datetime.now(timezone.utc)
@@ -92,19 +108,23 @@ def main():
     _, season_ja, season_en = _get_season(month)
     monthly_ja, monthly_en = MONTHLY_THEME[month]
 
+    season_ja_msgs,   season_en_msgs   = generate(season_ja,  season_en)
+    monthly_ja_msgs,  monthly_en_msgs  = generate(monthly_ja, monthly_en)
+    holiday_ja_msgs,  holiday_en_msgs  = generate('休日出勤・休みでも働く人へのねぎらい', 'working on holidays, dedication deserves recognition')
+
     data = {
         'year': year,
         'month': month,
         'generated_at': now.isoformat(),
         'ja': {
-            'season':          generate_ja(season_ja),
-            'monthly':         generate_ja(monthly_ja),
-            'holiday_working': generate_ja('休日出勤・休みでも働く人へのねぎらい'),
+            'season':          season_ja_msgs,
+            'monthly':         monthly_ja_msgs,
+            'holiday_working': holiday_ja_msgs,
         },
         'en': {
-            'season':          generate_en(season_en),
-            'monthly':         generate_en(monthly_en),
-            'holiday_working': generate_en('working on holidays, dedication deserves recognition'),
+            'season':          season_en_msgs,
+            'monthly':         monthly_en_msgs,
+            'holiday_working': holiday_en_msgs,
         },
     }
 
