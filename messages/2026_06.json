@@ -1,0 +1,81 @@
+{
+  "year": 2026,
+  "month": 6,
+  "generated_at": "2026-06-01T04:54:55.124220+00:00",
+  "ja": {
+    "season": [
+      "夏の光の中で、心ゆくまで羽を伸ばして。",
+      "頑張った分だけ、心置きなくリラックスを。",
+      "走り抜けたあなたへ、優しい休息の時間を。",
+      "今日からは心も体も解放して。自分にご褒美を。",
+      "あなたのペースで過ごす休日。心から楽しんで。",
+      "忙しい日々から少し離れて。今日は自分のために。",
+      "ここまで頑張った自分に、最高のリフレッシュを。",
+      "心に涼しい風を。今日は焦らず、ただのんびりと。",
+      "暑い毎日、本当にお疲れ様です。今日は心穏やかに。",
+      "爽やかな風を感じて。今日は休息という名の冒険へ。"
+    ],
+    "monthly": [
+      "雨音に癒やされて、心に少し余裕を。",
+      "自分をいたわる時間を大切に。",
+      "季節の変わり目、まずは深呼吸から。",
+      "一歩ずつ、着実に歩んでいますね。",
+      "休息は、次に進むための大切な準備。",
+      "心と体に、優しい休日を。",
+      "今日までよく頑張りましたね。",
+      "少し立ち止まって、自分に微笑みかけて。",
+      "新しい季節に向けて、今は英気を養って。",
+      "肩の力を抜いて、ゆったり過ごしましょう。"
+    ],
+    "holiday_working": [
+      "今日も一日、本当にお疲れ様でした。",
+      "いつも頑張っている姿を、知っています。",
+      "心と体を休めて、穏やかな時間を。",
+      "今はただ、ゆっくりと深呼吸を。",
+      "努力が形になる日は、すぐそこです。",
+      "自分にご褒美をあげる準備をしましょう。",
+      "あなたのペースで、一歩ずつ進めば大丈夫。",
+      "今日が終われば、心ゆくまで休息を。",
+      "頑張った分だけ、自分を甘やかして。",
+      "肩の力を抜いて、リラックスしましょう。"
+    ]
+  },
+  "en": {
+    "season": [
+      "Step back, slow down, and enjoy your time off.",
+      "Rest well and let your energy bloom once again.",
+      "Unplug and recharge under the warmth of the sun.",
+      "Warm days and calm vibes ahead. Enjoy your time.",
+      "Be kind to yourself today. You deserve this rest.",
+      "Celebrate your hard work by simply resting today.",
+      "Today is all yours. Spend it exactly how you like.",
+      "Soak up the sun and enjoy your well-deserved break.",
+      "Let the summer breeze clear your mind. Enjoy today.",
+      "Take a deep breath and let your soul find some shade."
+    ],
+    "monthly": [
+      "Make time to find your inner quiet.",
+      "A well-deserved rest is just ahead.",
+      "Give yourself a moment of true calm.",
+      "You have handled so much with grace.",
+      "Move forward at your own pace today.",
+      "Resting is how you prepare to bloom.",
+      "Find peace in the rhythm of the rain.",
+      "Let go of the weight and relax today.",
+      "Take it slow; you are doing just fine.",
+      "Your progress is steady and meaningful."
+    ],
+    "holiday_working": [
+      "Make today a day for self-care.",
+      "Relief is closer than you think.",
+      "Take some time to be kind to yourself.",
+      "Your dedication does not go unnoticed.",
+      "Let yourself rest and find some peace.",
+      "Thank you for all your hard work today.",
+      "Take the pressure off and simply relax.",
+      "Take a deep breath; you are doing great.",
+      "Stay strong, the finish line is in sight.",
+      "Be gentle with yourself and take it easy."
+    ]
+  }
+}
