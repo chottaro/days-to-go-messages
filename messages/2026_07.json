@@ -1,0 +1,81 @@
+{
+  "year": 2026,
+  "month": 7,
+  "generated_at": "2026-07-01T04:25:02.263811+00:00",
+  "ja": {
+    "season": [
+      "走り続けた心に、優しい休息を。",
+      "深呼吸して、自分を労わる一日を。",
+      "今日も一日、自分らしく健やかに。",
+      "暑さに負けないくらい、自分を大切に。",
+      "一息ついて、心に涼しい風を送りましょう。",
+      "心と体に休息を。自分を甘やかす時間です。",
+      "エネルギーを充電して、明日をより明るく。",
+      "頑張りのバトンを置いて、心穏やかな時間を。",
+      "今日という日は、自分を癒すためにあります。",
+      "頑張るあなたへ。今日は心も体もオフモードに。"
+    ],
+    "monthly": [
+      "頑張った自分に、心からの休息を。",
+      "今日はゆったりと、自分のペースで。",
+      "お疲れ様です。今日は自分を甘やかす日。",
+      "今日という日は、心と体を満たすために。",
+      "よく頑張りました。今日は休息の時間です。",
+      "心穏やかな一日になりますように。",
+      "自分にご褒美を。ゆっくり休みましょう。",
+      "自分をいたわる、優しい一日にしましょう。",
+      "準備は整いました。今日は思い切り休む日。",
+      "頑張ったあとの休息は、最高のご褒美です。"
+    ],
+    "holiday_working": [
+      "今日も一日、本当にお疲れ様でした。",
+      "あなたの踏ん張りに、心から敬意を。",
+      "ここまで本当によく走ってきましたね。",
+      "積み重ねてきた努力に、静かな休息を。",
+      "自分へのご褒美を忘れないでくださいね。",
+      "今はゆっくりと、自分を労わる時間です。",
+      "心からの休息が、あなたを待っています。",
+      "今日は無理をせず、自分のペースを大切に。",
+      "少し肩の力を抜いて、深呼吸してみましょう。",
+      "頑張ったね。今日は存分に甘えていい日です。"
+    ]
+  },
+  "en": {
+    "season": [
+      "You’ve done great; it’s time to unwind.",
+      "Rest is productive. Take it easy today.",
+      "Breathe easy and let the relaxation begin.",
+      "Find a moment of calm under the sun today.",
+      "Today is all about healing and finding joy.",
+      "Give your hardworking heart a gentle break.",
+      "Keep your cool and be kind to yourself today.",
+      "Almost there—stay focused on your own rhythm.",
+      "Put down the weight of the day and just relax.",
+      "Rest is the fuel for tomorrow. Enjoy your day."
+    ],
+    "monthly": [
+      "Be gentle with yourself today.",
+      "Your well-earned break starts now.",
+      "You did your best. Time to unwind.",
+      "Let go of the stress and just relax.",
+      "Focus on yourself and find your calm.",
+      "Simply enjoy the gift of a quiet day.",
+      "Rest mode: on. You deserve this peace.",
+      "Take a deep breath and enjoy your day.",
+      "Unplug and recharge your energy today.",
+      "A well-deserved pause is finally here."
+    ],
+    "holiday_working": [
+      "Step back, slow down, and breathe deep.",
+      "You’ve put in the work. Rest well today.",
+      "Peace and rest are yours to claim today.",
+      "Breathe easy; you have earned this break.",
+      "Take a deep breath and let the rest begin.",
+      "Hard work pays off—start by resting today.",
+      "You’ve reached the mark. Now, simply relax.",
+      "Today is for you. Unwind and find your calm.",
+      "Switch off and enjoy the peace you've earned.",
+      "Give yourself credit for all you’ve achieved."
+    ]
+  }
+}
