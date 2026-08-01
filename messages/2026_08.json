@@ -1,0 +1,81 @@
+{
+  "year": 2026,
+  "month": 8,
+  "generated_at": "2026-08-01T03:31:10.952636+00:00",
+  "ja": {
+    "season": [
+      "太陽のように輝く一日にしましょう。",
+      "暑さに負けないくらい、心にゆとりを。",
+      "頑張った自分に、最高のご褒美を。",
+      "今日の空は、休息を告げる色です。",
+      "心ゆくまでリラックスしましょう。",
+      "深呼吸をして、穏やかな時間を。",
+      "自分をいたわる、優しい一日を。",
+      "エネルギーを蓄えて、明日へ。",
+      "休息は、輝くための大切なステップ。",
+      "肩の力を抜いて、今日を楽しみましょう。"
+    ],
+    "monthly": [
+      "心地よい風を感じて、深呼吸を忘れずに。",
+      "休息は、次に進むためのエネルギーです。",
+      "あなたのペースで進めば、それで十分です。",
+      "心地よく一日を終えられるよう、あと少し。",
+      "今日という一日を、大切に駆け抜けましょう。",
+      "自分をいたわる準備は、もうできていますか？",
+      "心にゆとりを持って、丁寧に過ごしましょう。",
+      "今日が終われば、自由な時間が待っています。",
+      "深呼吸一つで、気持ちはもっと軽くなるはず。",
+      "よく走りました。次は休息という贈り物です。"
+    ],
+    "holiday_working": [
+      "肩の力を抜いて、深呼吸を。今日は休息の時間です。",
+      "一息つきましょう。あなたのための静かな時間を大切に。",
+      "頑張り屋のあなたへ。今日は自分を労わる大切な一日です。",
+      "日々の努力に感謝を。今日は自分を甘やかす特権の日です。",
+      "ここまで歩んできた自分を認めて。今日は休息のときです。",
+      "今日という一日が、あなたに安らぎを運んでくれますように。",
+      "張り詰めていた糸を少しだけ緩めて。今日は自由な時間です。",
+      "心に灯りをともすように、今日はゆったりと過ごしましょう。",
+      "いつも本当にお疲れ様です。今日は心穏やかに過ごしましょう。",
+      "よく耐え、よく進みました。今日は自分を褒めてあげましょう。"
+    ]
+  },
+  "en": {
+    "season": [
+      "Let the day's warmth fuel your soul.",
+      "Give yourself permission to simply be.",
+      "Warm sunshine, calm mind, happy heart.",
+      "A gentle day for a well-deserved rest.",
+      "Take a deep breath and enjoy your calm.",
+      "Today is all about kindness to yourself.",
+      "Treat your soul to a little peace today.",
+      "Find your sunshine and enjoy the day off.",
+      "Recharge your spirit under the summer sky.",
+      "Slow down and savor every peaceful moment."
+    ],
+    "monthly": [
+      "Make the most of the day ahead.",
+      "Quiet moments are just around the corner.",
+      "You’ve come far; rest is your next reward.",
+      "Keep things simple and go at your own pace.",
+      "Keep going—a peaceful break is almost here.",
+      "Moving at your own speed is more than enough.",
+      "Slow down and embrace the beauty of the moment.",
+      "Don't forget to appreciate how far you've come.",
+      "Rest is the fuel that keeps you moving forward.",
+      "Be kind to yourself; you’ve earned a gentle day."
+    ],
+    "holiday_working": [
+      "Allow yourself to fully recharge today.",
+      "Rest is productive, too. Enjoy your time off.",
+      "Step back and enjoy the stillness of the day.",
+      "Slow down and embrace the quiet moments today.",
+      "Today, your only task is to relax and breathe.",
+      "Be kind to yourself today. You deserve this rest.",
+      "Take a deep breath and let your day of rest begin.",
+      "You’ve done enough for now. Give yourself a break.",
+      "You have worked so hard. May today bring you peace.",
+      "Let go of the busy days. Today is for your comfort."
+    ]
+  }
+}
